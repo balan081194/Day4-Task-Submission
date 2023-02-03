@@ -1,0 +1,49 @@
+//1. How to compare two JSON have the same properties without order?
+
+let obj1 = {
+  name: "person1",
+  age: 5};
+  
+let obj2 = {
+  age: 5,
+  name: "person1"};
+
+JSON.stringify(obj1) === JSON.stringify(obj2)
+console.log("false")
+
+
+//2. use the rest countries API given URL and display all the country flags in the console.
+
+var request=new XMLHttpRequest();
+
+request.open("GET","https://restcountries.com/v3.1/all");
+
+request.send();
+
+request.onload=function(){
+var result=JSON.parse(request.response);
+for(i=0; i<result.length; i++){
+console.log(result[i].flags.png);
+}
+}
+
+
+//3. use the rest countries API URL in above and display country name,population ,region and sub region.
+
+var request=new XMLHttpRequest();
+
+request.open("GET","https://restcountries.com/v3.1/all");
+
+request.send();
+
+request.onload=function(){
+var result=JSON.parse(request.response);
+
+for(i=0; i<result.length; i++) {
+  console.log("country Name:", result[i].name.common);
+ console.log("population:", result[i].population);
+ console.log("Region:", result[i].region);
+ console.log("Subregion:", result[i].subregion);
+ 
+ }
+}
